@@ -19,10 +19,14 @@ import logging
 import math
 import os
 import sys
+import tkinter as tk
+from tkinter import filedialog, PhotoImage
 
 import matplotlib.pylab as plot
 import numpy as np
 
+# GLOBAL DEFAULTS
+ICON_FILE = 'projectile_logo.png'
 
 def projectilemotion(x0, y0, v0, theta, g) -> plot[xPeak, yPeak, maxRange]:
     """projectlemotion requires 5 user input arguments which are as follows;
@@ -43,9 +47,9 @@ def projectilemotion(x0, y0, v0, theta, g) -> plot[xPeak, yPeak, maxRange]:
         maxRange: the maximum displacement in x-direction [m].
     
     Raises:
-        Error: dontKnow
+        Error: 
     """ 
-    
+
     theta = 45 # launch angle in degrees
     launchAngle = (theta * (math.pi/180)) # Converts launch angle into radians
     maxRange = ((v0.**2)/g) * (np.sin(2*launchAngle)) # Calculates range in x-direction (using .^ vector   multiplication)
