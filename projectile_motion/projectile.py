@@ -1,17 +1,22 @@
 """This program plots the trajectory of a ballistic projtile fired on Earth and the Moon.
 
-This program calls a function named 'projectilemotion' with a number of arguments
+This program calls a function named 'projectilemotion' which has a number of arguments
 passed in as variables such as initial displacement in 'x' and 'y' domain, initial
-velocity, as well as the launch angle and acceleration due to gravity. Gravity
-will be defined as either 9.81m/s**2 for Earth or 1.62m/s**2 for the Moon. This 
-program will plot the flight path (trajecotry) of the projectile on a graph by
-calculating the maxRange in x-direction (m), yPeak(m) and the x-position in
-which it achieves yPeak(m).
+velocity, as well as the launch angle and acceleration due to gravity for
+respective celestial body. Gravity will be defined as either 9.81m/s**2 for Earth
+or 1.62m/s**2 for the Moon. This program will plot the flight path (trajecotry)
+of the projectile on a graph by calculating the maxRange in x-direction (m), yPeak(m)
+and the x-position in terms of yPeak(m).
 
     Typical usage examples:
     
-    bla = blabla
-    he = hehe
+    projectilemotion(0, 0, 940, 45, 9.81) = Initial displacement coordinates: (0),0),
+      940m/s initial velocity of ballistic, 45 degreee launch angle, acceleration
+        due to gravity on Earth (9.81m/s**2)
+
+    projectilemotion(0, 0, 940, 45, 1.62) = Initial displacement coordinates: (0),0),
+      940m/s initial velocity of ballistic, 45 degreee launch angle, acceleration
+        due to gravity on the Moon (1.62m/s**2)
 """
 
 import argparse
