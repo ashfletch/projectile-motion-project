@@ -27,13 +27,29 @@ import sys
 import tkinter as tk
 from tkinter import filedialog, PhotoImage
 
-import matplotlib.pylab as plot
+import matplotlib.pylab as plt
 import numpy as np
 
 # GLOBAL DEFAULTS
 ICON_FILE = 'projectile_logo.png'
 
-def projectilemotion(x0, y0, v0, theta, g) -> plot[xPeak, yPeak, maxRange]:
+
+def trajectory(x0: int, y0: int, v0: int, theta: int, g: float) -> tuple:
+    launch_angle = (theta * (math.pi / 180)) # Converts launch angle into radians
+    max_range = int(((v0**2) / g) * (math.sin(2 * launch_angle))) # Calculates range in x-direction (using .^ vector   multiplication)
+    x_step = int(max_range / 100) # Calculates step, using 100 values for plotting up to the range           
+    x_values = []
+    for value in range(x0, max_range, x_step):
+        x_values.append(value)
+    
+    y_values = []
+    for x in x_values:
+        y_values.append(((x * math.tan(launch_angle)) - g / (2 * (v0**2) * (math.cos(launch_angle))**2) * x**2) + y0)
+    return (x_values, y_values)
+
+
+def projectilemotion(x0: int, y0: int, v0: int, theta: int, g: float):
+    pass
     """projectlemotion requires 5 user input arguments which are as follows;
 
     Args:
@@ -55,35 +71,35 @@ def projectilemotion(x0, y0, v0, theta, g) -> plot[xPeak, yPeak, maxRange]:
         Error: 
     """ 
 
-    theta = 45 # launch angle in degrees
-    launchAngle = (theta * (math.pi/180)) # Converts launch angle into radians
-    maxRange = ((v0.**2)/g) * (np.sin(2*launchAngle)) # Calculates range in x-direction (using .^ vector   multiplication)
-    xStep = (maxRange / 100) # Calculates step, using 100 values for plotting up to the range           
-    x = x0:xStep:maxRange # x vector from initial x-value --> range. 100 values
-    y = ((x * tan(launchAngle)) - g/(2*(v0.**2)*(np.cos(launchAngle)).**2)*x.**2) + y0 # displacement in y-direction
-    
-    for n = 1:length(x) 
-        flightPath = plot(x(n),y(n),'b.') # trajectory of projectile with blue trace
-        set(flightPath,'LineWidth',2) # trace width on plot
-        title('Projectile Motion') # title for plot
-        xlabel('distance (m)')
-        ylabel('height (m)') # labelling axes
-        hold on # this allows multiple plots on a single figure
-        #  if (mod(n,3) == 0) - this could be used to perform a live plot. By increasing the
-        #  integer, the plot will speed up by dividing every 3 values of x as opposed to
-        #  every value of x if using a ‘pause’ operator at each plot.
-        #  end
+def plot(x_values, y_values):
+    plt.plot(x_values, y_values)
+    plt.axis([0, max_range, 0, max(y_values)])
+    plt.show()
+    print()
 
-    end
-    
-    zoom on
-    yPeak = max(y) # max height of plot
-    maxPoint = find(y == max(y(:))) # Index of max point on plot
-    xPeak = x(maxPoint) # value of x at peak height
-    flightPath = plot(x(maxPoint),y(maxPoint),'r.') # denoting max point with red marker
-    set(flightPath,'MarkerSize',20) # marker size to stand out on plot
 
-    end
+    # for n = 1:length(x) 
+    #     flight_path = plot(x(n),y(n),'b.') # trajectory of projectile with blue trace
+    #     set(flightPath,'LineWidth',2) # trace width on plot
+    #     title('Projectile Motion') # title for plot
+    #     xlabel('distance (m)')
+    #     ylabel('height (m)') # labelling axes
+    #     hold on # this allows multiple plots on a single figure
+    #     #  if (mod(n,3) == 0) - this could be used to perform a live plot. By increasing the
+    #     #  integer, the plot will speed up by dividing every 3 values of x as opposed to
+    #     #  every value of x if using a ‘pause’ operator at each plot.
+    #     #  end
+
+    # end
+    
+    # zoom on
+    # yPeak = max(y) # max height of plot
+    # maxPoint = find(y == max(y(:))) # Index of max point on plot
+    # xPeak = x(maxPoint) # value of x at peak height
+    # flightPath = plot(x(maxPoint),y(maxPoint),'r.') # denoting max point with red marker
+    # set(flightPath,'MarkerSize',20) # marker size to stand out on plot
+
+    # end
 
 if __name__ == '__main__':
-    main()
+    trajectory(0, 0, 940, 45, 1.62)
