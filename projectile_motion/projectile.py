@@ -74,6 +74,8 @@ def projectilemotion(x0: int, y0: int, v0: int, theta: int, g: float):
 def plot(x_values, y_values):
     plt.plot(x_values, y_values)
     plt.axis([0, max_range, 0, max(y_values)])
+    plt.xlabel('Range [m]')
+    plt.ylabel('Height [m]')
     plt.show()
     print()
 
