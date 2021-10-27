@@ -80,28 +80,5 @@ def plot(x_values, y_values):
     print()
 
 
-    # for n = 1:length(x) 
-    #     flight_path = plot(x(n),y(n),'b.') # trajectory of projectile with blue trace
-    #     set(flightPath,'LineWidth',2) # trace width on plot
-    #     title('Projectile Motion') # title for plot
-    #     xlabel('distance (m)')
-    #     ylabel('height (m)') # labelling axes
-    #     hold on # this allows multiple plots on a single figure
-    #     #  if (mod(n,3) == 0) - this could be used to perform a live plot. By increasing the
-    #     #  integer, the plot will speed up by dividing every 3 values of x as opposed to
-    #     #  every value of x if using a ‘pause’ operator at each plot.
-    #     #  end
-
-    # end
-    
-    # zoom on
-    # yPeak = max(y) # max height of plot
-    # maxPoint = find(y == max(y(:))) # Index of max point on plot
-    # xPeak = x(maxPoint) # value of x at peak height
-    # flightPath = plot(x(maxPoint),y(maxPoint),'r.') # denoting max point with red marker
-    # set(flightPath,'MarkerSize',20) # marker size to stand out on plot
-
-    # end
-
 if __name__ == '__main__':
     trajectory(0, 0, 940, 45, 1.62)
