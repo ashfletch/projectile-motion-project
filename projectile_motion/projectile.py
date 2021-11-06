@@ -44,7 +44,8 @@ def trajectory(x0: int, y0: int, v0: int, theta: int, g: float) -> tuple:
     
     y_values = []
     for x in x_values:
-        y_values.append(((x * math.tan(launch_angle)) - g / (2 * (v0**2) * (math.cos(launch_angle))**2) * x**2) + y0)
+        y_values.append(((x * math.tan(launch_angle)) - g / (2 * (v0**2) *
+         (math.cos(launch_angle))**2) * x**2) + y0)
     return (x_values, y_values)
 
 
@@ -77,8 +78,7 @@ def plot(x_values, y_values):
     plt.xlabel('Range [m]')
     plt.ylabel('Height [m]')
     plt.show()
-    print()
 
 
 if __name__ == '__main__':
-    trajectory(0, 0, 940, 45, 1.62)
+    trajectory(0, 0, 940, 45, 9.81)

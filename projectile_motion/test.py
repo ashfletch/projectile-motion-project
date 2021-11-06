@@ -1,0 +1,1 @@
+def get_log_file(name: str = None, filename: str = None, file_size: int = 5, log_level: int = 20, **kwargs) ‑> logging.Logger)
