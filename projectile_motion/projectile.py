@@ -36,8 +36,8 @@ ICON_FILE = 'projectile_logo.png'
 
 def trajectory(x0: int, y0: int, v0: int, theta: int, g: float) -> tuple:
     launch_angle = (theta * (math.pi / 180)) # Converts launch angle into radians
-    max_range = int(((v0**2) / g) * (math.sin(2 * launch_angle))) # Calculates range in x-direction (using .^ vector   multiplication)
-    x_step = int(max_range / 100) # Calculates step, using 100 values for plotting up to the range           
+    max_range = int(((v0**2) / g) * (math.sin(2 * launch_angle))) # Calculates range in x-direction (using vector multiplication)
+    x_step = int(max_range / 100) # Calculates step, using 100 values for plotting up to the range
     x_values = []
     for value in range(x0, max_range, x_step):
         x_values.append(value)
